@@ -1,0 +1,38 @@
+# Archivos autocad
+*.bak
+*.dwl
+*.dwl2
+
+# Archivos compilación latex
+*.aux
+*.lof
+*.lomycapequ
+*.lot
+*.out
+*.synctex.*
+*.toc
+*.log
+*.lol
+*.bbl
+*.blg
+
+# Archivos ETABS
+*.$et
+*.ebk
+*.tlog
+*.ico
+
+# Archivos resultado de ETABS
+*.K*
+*.Y*
+*.msh
+
+# Archivos de windows
+**/desktop.ini
+
+# Archivos residuales de word/excel
+*$*.doc*
+*$*.xls*
+
+# Archivo místico
+~*.tmp
