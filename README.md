@@ -1,2 +1,2 @@
-# proyecto-CI5223
-Proyecto del curso Diseño de Albañileria Estructura
+# Proyecto CI5223
+Proyecto del curso CI5223-1 Diseño de Albañileria Estructural 2018, Primavera.
