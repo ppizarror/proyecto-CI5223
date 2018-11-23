@@ -1,0 +1,31 @@
+\newpage
+\section{Antecedentes análisis sísmico}
+
+\subsection{Zona sísmica}
+
+La estructura se encuentra en la ciudad de Illapel, declarada como zona sísmica tipo 3 según la norma Chilena NCh 433 Of 1996:2012 (Figura \ref{zona-sismica}).
+
+\insertimageboxed[\label{zona-sismica}]{zonasismica}{width=8cm}{0.5}{Zona sísmica ciudad de Illapel, Figura 4.1 norma NCh 433.}
+
+\begin{table}[H]
+  \centering
+  \caption{Valor de la aceleración efectiva $A_o$, Tabla 6.2 NCh433.}
+    \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Zona sísmica} & \boldmath{}\textbf{$A_o$}\unboldmath{} \bigstrut\\
+    \hline
+    1     & 0.20g \bigstrut[t]\\
+    2     & 0.30g \\
+    3     & 0.40g \bigstrut[b]\\
+    \hline
+    \end{tabular}%
+  \label{tab:zonasismicaAo}%
+\end{table}%
+
+Luego, según la Tabla \ref{tab:zonasismicaAo} la aceleración efectiva del sitio corresponde a $A_o=0.4g=3.2 \frac{m}{s^2}$.
+
+\subsection{Espectro de diseño}
+
+El espectro de diseño elástico se obtuvo según punto 6.3.5 de NCh433. Una vez se calcule el periodo predominante en los ejes $x$ e $y$ se puede calcular el espectro elástico reducido por ductilidad.
+
+\insertimage{elastico}{width=8cm}{Espectro de diseño, según NCh433.}
