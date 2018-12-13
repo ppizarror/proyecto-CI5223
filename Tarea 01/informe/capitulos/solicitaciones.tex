@@ -1,0 +1,44 @@
+\section{Solicitaciones}
+
+\subsection{Cargas muertas}
+
+Además de considerarse como cargas muertas el peso de las estructuras, techumbres, pisos, muros y paneles, etc., las presiones laterales y verticales de líquidos, gases y materiales fluidos (granulares o similares) serán también tratadas como cargas muertas. \\
+    
+Se consideran como cargas muertas los siguientes conjuntos:
+
+\begin{enumerate}[label=\alph*) ]
+    \item Peso de la estructura que considera los elementos estructurales pesados: vigas, techumbre, muros, tabiques, etc., y los no estructurales pesados: peso de las terminaciones (cielos falsos, estuco, terminaciones, etc.).
+    
+    \item Carga suspendida. Todas las cargas colgantes permanentes tales como puentes de cañerías, bandejas de soportes de cables eléctricos, luminarias, etc.
+
+    % \item La acumulación de polvo en la estructura será considerada como carga permanente, con un peso específico de 1400 kg/m3 y un talud de 1:1,5 (V:H).
+\end{enumerate}
+
+\subsection{Cargas de uso}
+
+Como carga de uso se considera lo establecido en la NCh 1537. A continuación se listan las cargas aplicables al caso:
+
+\begin{table}[H]
+  \centering
+  \caption{Cargas de uso aplicables a la estructura}
+        \begin{tabular}{|l|l|c|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Tipo de edificio}} & \multicolumn{1}{c|}{\textbf{Descripción de uso}} & \multicolumn{1}{p{5.355em}|}{\textbf{Carga de uso [kPa]}} \bigstrut\\
+        \hline
+        \multirow{4}[2]{*}{Viviendas} & Áreas de uso general & 2 \bigstrut[t]\\
+              & Dormitorios y buhardillas habitables & 2 \\
+              & Entretecho con almacenaje & 1,5 \bigstrut[b]\\
+        \hline
+        \end{tabular}%
+  \label{carga-uso}%
+\end{table}%
+
+\subsection{Carga de nieve}
+
+No se considera carga de nieve, debido a la ubicación geográfica de la vivienda.
+
+\subsection{Carga de viento}
+
+Para el cálculo de fuerzas debidas a la acción del viento se aplicará lo especificado en la norma NCh 432. Para ello se suponen los casos W+ y W-, con viento en sentido positivo y negativo de la dirección X, respectivamente. 
+
+\insertimage[\label{viento}]{img/geometriaviento}{width=11cm}{Coeficiente de forma a considerar para cargas de viento.}
