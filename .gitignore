@@ -36,3 +36,6 @@
 
 # Archivo místico
 ~*.tmp
+
+# Archivos matlab
+*.asv
