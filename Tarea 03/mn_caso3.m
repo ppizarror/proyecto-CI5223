@@ -12,5 +12,4 @@ for i = 1:nps
     n(i) = Cm - Ts;
     m(i) = Cm * em + Ts * es;
 end
-alpha(i)
 end

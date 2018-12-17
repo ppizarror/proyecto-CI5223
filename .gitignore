@@ -39,3 +39,7 @@
 
 # Archivos matlab
 *.asv
+
+# Ignora el corcho de gráficos
+tarea\ 03/geometria/
+tarea\ 03/muro/

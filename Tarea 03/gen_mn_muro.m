@@ -20,10 +20,11 @@ NPOINTS = 100; % Numero de untos de analisis
 %% Calcula parametros del material
 Es = 2100000; % Modulo de rigidez del acero (kgf/cm2)
 if ~csis % Caso estatico
-    Em = 700 * fm;
+    Em = 700 * fm; %#ok<*NASGU>
 else
     Em = 800 * fm;
 end
+Em = 1000 * fm;
 if ~csis % Caso estatico
     Fm = 0.33 * fm; % Con inspeccion especializada
 else % Caso sismico
@@ -45,7 +46,7 @@ end
 
 % Calcula la carga axial
 fb = 0.2 * fm;
-phi = 1 - (h / (40 * min([b, t])))^3;
+phi = 1 - (h / (40 * t))^3;
 Fa = fb * phi;
 if csis
     Fa = Fa * 1.33;
