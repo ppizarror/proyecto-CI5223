@@ -22,8 +22,7 @@ title({'Diagrama interacción muro albañilería', geom});
 
 % Grafico sismico
 [ms, ns] = gen_mn_muro(fm, h, b, t, d, dp, As, true, aceroA44_28);
-plot(ms(1:end), ns(1:end), 'b-', 'LineWidth', 1);
-return
+plot(ms(2:end), ns(2:end), 'b-', 'LineWidth', 1);
 
 % Grafico estatico
 [me, ne] = gen_mn_muro(fm, h, b, t, d, dp, As, false, aceroA44_28);
@@ -35,5 +34,6 @@ plot(me(1:2), ne(1:2), 'r--', 'LineWidth', 1);
 
 legend({'Dinámico', 'Estático'}, 'location', 'southeast');
 ylim([0, max(yticks)]);
+xlim([0, max(xticks)]);
 
 end

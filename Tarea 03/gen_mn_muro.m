@@ -19,7 +19,11 @@ NPOINTS = 100; % Numero de untos de analisis
 
 %% Calcula parametros del material
 Es = 2100000; % Modulo de rigidez del acero (kgf/cm2)
-Em = 700 * fm;
+if ~csis % Caso estatico
+    Em = 700 * fm;
+else
+    Em = 800 * fm;
+end
 if ~csis % Caso estatico
     Fm = 0.33 * fm; % Con inspeccion especializada
 else % Caso sismico
@@ -41,7 +45,7 @@ end
 
 % Calcula la carga axial
 fb = 0.2 * fm;
-phi = 1 - (h / (40 * b))^3;
+phi = 1 - (h / (40 * min([b, t])))^3;
 Fa = fb * phi;
 if csis
     Fa = Fa * 1.33;
@@ -67,14 +71,14 @@ n(2) = Na;
 
 % Distribucion triangular en todo el ancho
 n(3) = (Fm * t * b) / 2;
-em = (t / 2 - t / 3);
+em = (b / 2 - b / 3);
 m(3) = n(3) * em;
 
 %% Caso 2
 NPOINTS = NPOINTS - 3;
 np2 = floor(NPOINTS*1/3);
 NPOINTS = NPOINTS - np2;
-[m2, n2] = mn_caso2(Fm, t, b, np2);
+[m2, n2] = mn_caso2(Fm, b, t, d, np2, dp/d);
 for i = 1:np2
     m(i+3) = m2(i);
     n(i+3) = n2(i);
@@ -85,7 +89,7 @@ nb = Es / Em; % Punto de balance
 kb = nb / (nb + Fs / Fm);
 np3 = floor(NPOINTS*0.5);
 NPOINTS = NPOINTS - np3;
-[m3, n3] = mn_caso3(Fm, t, b, nb, kb/2, As, np3);
+[m3, n3] = mn_caso3(Fm, t, d, nb, kb, As, np3, dp/d);
 for i = 1:np3
     m(i+3+np2) = m3(i);
     n(i+3+np2) = n3(i);
@@ -93,9 +97,9 @@ end
 
 %% Caso 4
 np4 = NPOINTS;
-kbmin = max([-(As * nb + sqrt((As^2)*(nb^2)+2*b*d*As*nb)) / (b * d), ...
-    -(As * nb - sqrt((As^2)*(nb^2)+2*b*d*As*nb)) / (b * d)]);
-[m4, n4] = mn_caso4(Fs, t, b, nb, kbmin/2, kb/2, As, np4);
+kbmin = max([-(As * nb + sqrt((As^2)*(nb^2)+2*t*d*As*nb)) / (t * d), ...
+    -(As * nb - sqrt((As^2)*(nb^2)+2*t*d*As*nb)) / (t * d)]);
+[m4, n4] = mn_caso4(Fs, t, d, nb, kbmin/2, kb/2, As, np4, dp/d);
 for i = 1:np4
     m(i+3+np2+np3) = m4(i);
     n(i+3+np2+np3) = n4(i);
