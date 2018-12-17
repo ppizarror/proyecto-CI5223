@@ -60,7 +60,7 @@ n(1) = Na;
 %% Caso 1
 % Limite superior
 fl = 2 * Na / (b * t) - Fm;
-n(2) = (Fm + fl) / 2 * (t * b);
+n(2) = Na;
 m(2) = (Fm - fl) / 2 * t * b * (t / 2 - t / 3);
 
 % Distribucion triangular en todo el ancho
