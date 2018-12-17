@@ -1,12 +1,13 @@
-function [m, n] = gen_mn_muro(fm, h, t, b, d, Ae, As, csis, aceroA44_28)
+function [m, n] = gen_mn_muro(fm, h, b, t, d, dp, As, csis, aceroA44_28)
 %GEN_MN_MURO Genera el diagrama momento-carga axial para un muro.
 %
 % Parametros:
 %   fm              Resistencia prismatica de la albañileria (kgf/cm2)
 %   h               Altura del muro (cm)
-%   t               Ancho del muro (cm)
 %   b               Largo del muro (cm)
+%   t               Ancho del muro (cm)
 %   d               Recubrimiento armadura (cm)
+%   d'              Recubrimiento armadura (cm)
 %   Ae              Area efectiva por unidad de largo (cm2/cm)
 %   As              Area de las barras de acero (cm2)
 %   csis            Indica que se aplica el caso estatico o sismico (true/false)
@@ -38,30 +39,31 @@ else
     end
 end
 
+% Calcula la carga axial
+fb = 0.2 * fm;
+phi = 1 - (h / (40 * b))^3;
+Fa = fb * phi;
+if csis
+    Fa = Fa * 1.33;
+end
+
 %% Calcula parametros geometricos
-Ae = Ae * b;
+Ae = b * t;
 
 %% Genera los vectores
 m = zeros(NPOINTS, 1);
 n = zeros(NPOINTS, 1);
 
 %% Calcula el primer punto, momento 0
-fb = 0.2 * fm;
-phi = 1 - (h / (40 * t))^3;
-fa = fb * phi;
-Na = fa * Ae;
-if csis
-    Na = Na * 1.33;
-end
+Na = Fa * Ae;
 
 m(1) = 0;
 n(1) = Na;
 
 %% Caso 1
 % Limite superior
-fl = 2 * Na / (b * t) - Fm;
-n(2) = (Fm + fl) / 2 * (t * b);
-m(2) = (Fm - fl) / 2 * t * b * (t / 2 - t / 3);
+m(2) = (Fm - Fa) * t * b * (b / 2 - b / 3);
+n(2) = Na;
 
 % Distribucion triangular en todo el ancho
 n(3) = (Fm * t * b) / 2;

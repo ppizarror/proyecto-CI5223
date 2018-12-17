@@ -1,4 +1,4 @@
-function [m, n] = gen_mn_muro(fm, h, t, b, d, Ae, As, csis, aceroA44_28)
+function [m, n] = gen_mn_muro(fm, h, t, b, d, As, csis, aceroA44_28)
 %GEN_MN_MURO Genera el diagrama momento-carga axial para un muro.
 %
 % Parametros:
@@ -39,7 +39,7 @@ else
 end
 
 %% Calcula parametros geometricos
-Ae = Ae * b;
+Ae = t * b;
 
 %% Genera los vectores
 m = zeros(NPOINTS, 1);

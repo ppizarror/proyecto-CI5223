@@ -1,13 +1,13 @@
-function fig = plot_mn(fm, h, t, b, d, Ae, As, aceroA44_28, geom)
+function fig = plot_mn(fm, h, b, t, d, dp, As, aceroA44_28, geom)
 %PLOT_MN Genera el grafico interaccion.
 %
 % Parametros:
 %   fm              Resistencia prismatica de la albañileria (kgf/cm2)
 %   h               Altura del muro (cm)
-%   t               Ancho del muro (cm)
 %   b               Largo del muro (cm)
+%   t               Ancho del muro (cm)
 %   d               Recubrimiento armadura (cm)
-%   Ae              Area efectiva por unidad de largo (cm2/cm)
+%   dp              d' (cm)
 %   As              Area de las barras de acero (cm2)
 %   aceroA44_28     Indica si usa el acero A44-28H o el A63-42H
 %   geom            Nombre de la geometria
@@ -21,11 +21,12 @@ ylabel('N (tonf)');
 title({'Diagrama interacción muro albañilería', geom});
 
 % Grafico sismico
-[ms, ns] = gen_mn_muro(fm, h, t, b, d, Ae, As, true, aceroA44_28);
-plot(ms(2:end), ns(2:end), 'b-', 'LineWidth', 1);
+[ms, ns] = gen_mn_muro(fm, h, b, t, d, dp, As, true, aceroA44_28);
+plot(ms(1:end), ns(1:end), 'b-', 'LineWidth', 1);
+return
 
 % Grafico estatico
-[me, ne] = gen_mn_muro(fm, h, t, b, d, Ae, As, false, aceroA44_28);
+[me, ne] = gen_mn_muro(fm, h, b, t, d, dp, As, false, aceroA44_28);
 plot(me(2:end), ne(2:end), 'r-', 'LineWidth', 1);
 
 % Grafica las otras componentes

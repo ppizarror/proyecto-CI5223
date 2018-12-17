@@ -1,4 +1,4 @@
-function fig = plot_mn(fm, h, t, b, d, Ae, As, aceroA44_28, geom)
+function fig = plot_mn(fm, h, t, b, d, As, aceroA44_28, geom)
 %PLOT_MN Genera el grafico interaccion.
 %
 % Parametros:
@@ -21,11 +21,11 @@ ylabel('N (tonf)');
 title({'Diagrama interacción muro albañilería', geom});
 
 % Grafico sismico
-[ms, ns] = gen_mn_muro(fm, h, t, b, d, Ae, As, true, aceroA44_28);
+[ms, ns] = gen_mn_muro(fm, h, t, b, d, As, true, aceroA44_28);
 plot(ms(2:end), ns(2:end), 'b-', 'LineWidth', 1);
 
 % Grafico estatico
-[me, ne] = gen_mn_muro(fm, h, t, b, d, Ae, As, false, aceroA44_28);
+[me, ne] = gen_mn_muro(fm, h, t, b, d, As, false, aceroA44_28);
 plot(me(2:end), ne(2:end), 'r-', 'LineWidth', 1);
 
 % Grafica las otras componentes
