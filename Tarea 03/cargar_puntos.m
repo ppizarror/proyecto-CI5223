@@ -16,9 +16,8 @@ for i = 1:n
             ps(j) = p; %#ok<*AGROW>
             ms(j) = m;
         else
-            if (strcmp(comb, 'PP') || strcmp(comb, 'SC') || strcmp(comb, 'ASD-C1 Max') || ...
-                    strcmp(comb, 'ASD-C1 Min') || strcmp(comb, 'ASD-C2 Max') || ...
-                    strcmp(comb, 'ASD-C2 Min'))
+            if strcmp(comb, 'PP') || strcmp(comb, 'SC') || strcmp(comb, 'ASD-C1') || ...
+                    strcmp(comb, 'ASD-C2')
                 ps(j) = p;
                 ms(j) = m;
             end

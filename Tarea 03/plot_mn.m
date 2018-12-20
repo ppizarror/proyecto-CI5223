@@ -18,7 +18,6 @@ end
 fig = figure();
 hold on;
 grid on;
-grid minor;
 xlabel('M (tonf-m)');
 ylabel('N (tonf)');
 title({'Diagrama interacción muro albañilería', geom});
