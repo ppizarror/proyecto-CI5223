@@ -2,7 +2,7 @@ function cargar_piers(piers, figin, figout, dataresd, ndt, geom)
 npiers = length(piers);
 
 % Dibuja
-styles = {'+', 'o', '*', '.', 'x', 's', 'd', 'v', '>', '<'};
+styles = {'+', '*', '.', 'x', 'o', 's', 'd', 'v', '>', '<'};
 for i=1:npiers
     cargar_puntos_ambos(piers{i}, dataresd, ndt, true, styles{i}, figin);
 end
