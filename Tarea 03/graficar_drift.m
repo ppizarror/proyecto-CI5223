@@ -1,5 +1,5 @@
 close all;
-data = load('joint-displ.txt');
+data = load('drift.txt');
 dx = data(:, 1);
 dy = data(:, 2);
 
@@ -91,15 +91,14 @@ plot(ppx, ppy, '*', 'DisplayName', 'PP', 'MarkerSize', ms);
 
 grid on;
 grid minor;
-xlabel('Desplazamiento eje x (cm)');
-ylabel('Desplazamiento eje y (cm)');
-title('Desplazamiento máximo de nodos');
-xlim([-0.1, 0.1]);
+xlabel('Drift eje x (-)');
+ylabel('Drift eje y (-)');
+title('Drift de nodos');
+logplot = false;
 
-plotlog = true;
-if ~plotlog
-    legend('location', 'southeast');
+if ~logplot
+    legend('location', 'northeast');
 else
     legend('location', 'best');
-    symlog(gca, 'xy', -3);
+    symlog(gca, 'xy', -7)
 end

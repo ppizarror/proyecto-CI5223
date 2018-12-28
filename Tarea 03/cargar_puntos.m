@@ -4,13 +4,13 @@ ps = [];
 ms = [];
 j = 1;
 for i = 1:n
-    if strcmp(data(i, 1).Var1{1}, pier)
-        comb = data(i, 2).Var2{1};
-        p = abs(data(i, 4).Var4);
+    if strcmp(data(i, 2).Var2{1}, pier)
+        comb = data(i, 3).Var3{1};
+        p = abs(data(i, 5).Var5);
         if inplano
-            m = abs(data(i, 9).Var9);
+            m = abs(data(i, 10).Var10);
         else
-            m = abs(data(i, 8).Var8);
+            m = abs(data(i, 9).Var9);
         end
         if sis
             ps(j) = p; %#ok<*AGROW>

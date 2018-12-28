@@ -3,6 +3,7 @@
 close all;
 
 % Define fierros
+FI_16 = 8 * 8 * pi/100;
 FI_12 = 6 * 6 * pi/100;
 FI_10 = 5 * 5 * pi/100;
 FI_8 = 4 * 4 * pi/100;
@@ -45,7 +46,7 @@ cargar_piers({'M5X'}, g7in, g7out, dataresd, ndt, 'g7');
 [g8in, g8out] =     genera_diag_geom(37.5, 113.4, 164, 14, FI_10, FI_8, 'Geometría 8');
 cargar_piers({'M7X'}, g8in, g8out, dataresd, ndt, 'g8');
 
-[g9in, g9out] =     genera_diag_geom(37.5, 52,    510,   14, FI_12, FI_8, 'Geometría 9');
+[g9in, g9out] =     genera_diag_geom(37.5, 52,    510,   14, FI_16, FI_8, 'Geometría 9');
 cargar_piers({'M8X', 'M21X'}, g9in, g9out, dataresd, ndt, 'g9');
 
 [g10in, g10out] =   genera_diag_geom(37.5, 208,   37,    14, FI_12, FI_8, 'Geometría 10');
