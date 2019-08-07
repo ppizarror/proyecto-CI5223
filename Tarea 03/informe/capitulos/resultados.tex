@@ -1,0 +1,497 @@
+\newpage
+\section{Resultados}
+
+\subsection{Análisis modal espectral}
+
+\subsubsection{Cálculo factor corrección R*}
+
+Al calcular los períodos fundamentales de la estructura en los ejes traslacionales $x$ e $y$ se obtuvo los factores de reducción ${R^*}_x$ y ${R^*}_y$ del pseudo-espectro de aceleración mostrados en la Tabla \ref{tab:factores-reduccion-r}. Al obtener el corte basal en ambos ejes se calcularon los factores $f_x$ e $f_y$ para modificar el factor $R^*$, este corte en ambos ejes estuvo dentro de los límites delimitados por la norma (Tabla \ref{tab:cortemaximominimo}), por tanto $f_x=f_y=1$.
+
+\begin{table}[H]
+  \centering
+  \caption{Corte mínimo y máximo limitados por la norma NCh433.}
+  \begin{tabular}{cc}
+    \hline
+    \multicolumn{2}{c}{\textbf{Corte basal (tonf)}} \bigstrut\\
+    \hline
+    $Q_{min}$ & 4.130 \bigstrut[t]\\
+    $Q_{max}$ & 13.629 \bigstrut[b]\\
+    \hline
+  \end{tabular}
+  \label{tab:cortemaximominimo}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Cálculo factor de mayoración/minoración según el corte obtenido.}
+  \begin{tabular}{ccc}
+    \hline
+    \textbf{Dirección} & \textbf{Corte obtenido (tonf)} & \textbf{f} \bigstrut\\
+    \hline
+    x     & 9.068 & 1.00 \bigstrut[t]\\
+    y     & 9.867 & 1.00 \bigstrut[b]\\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Factores de corrección R*.}
+  \begin{tabular}{ccccc}
+    \hline
+    \textbf{Eje} & \textbf{R*} & \textbf{1/R* (scale factor)} & \textbf{f} & \textbf{Scale factor ponderado} \bigstrut\\
+    \hline
+    x     & 1.396 & 0.716 & 1.00  & 0.716 \bigstrut[t]\\
+    y     & 1.33  & 0.752 & 1.00  & 0.752 \bigstrut[b]\\
+    \hline
+  \end{tabular}
+  \label{tab:factores-reduccion-r}
+\end{table}
+
+Los factores $R*$ fueron usados para definir los casos sísmicos en ETABS. \\
+
+\begin{images}{Factores del espectro en ETABS.}
+    \addimage{modelo/ux-sis}{width=7cm}{Sismo en x.}
+    \addimage{modelo/uy-sis}{width=7cm}{Sismo en y.}
+\end{images}
+
+El espectro elástico y reducido se ilustra en la Figura \ref{espectroreducidoelastico}.
+
+\insertimage[\label{espectroreducidoelastico}]{modelo/espectro}{width=8cm}{Espectro elástico y reducido}
+
+\subsubsection{Resultados valores por dirección x/y}
+
+A partir del método modal espectral se obtuvieron los siguientes valores por cada eje X e Y:
+
+\begin{table}[H]
+  \centering
+  \caption{Valores por dirección X del sismo.}
+  \begin{tabular}{lrl}
+    \hline
+    \textbf{Sismo X} & \multicolumn{1}{c}{\textbf{Valor}} & \multicolumn{1}{c}{\textbf{Unidad}} \bigstrut\\
+    \hline
+    Peso sísmico & 51.62 & [Tonf] \bigstrut[t]\\
+    Corte Basal Mínimo & 4.13  & [Tonf] \\
+    Corte Basal Máximo & 13.63 & [Tonf] \\
+    Período Predominante & 0.033 & [s] \\
+    $R^*$ & 1.396 & [-] \\
+    Factor de Mayoración & 1.000 & [-] \\
+    Factor de Minoración & 0.716 & [-] \\
+    Corte Basal Efectivo & 9.07  & [Tonf] \\
+    Momento Volcante & 23.57 & [Tonf-m] \\
+    Brazo de Palanca & 2.60  & [m] \bigstrut[b]\\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Valores por dirección Y del sismo.}
+  \begin{tabular}{lrl}
+    \hline
+    \textbf{Sismo Y} & \multicolumn{1}{c}{\textbf{Valor}} & \multicolumn{1}{c}{\textbf{Unidad}} \bigstrut\\
+    \hline
+    Peso sísmico & 51.62 & [Tonf] \bigstrut[t]\\
+    Corte Basal Mínimo & 4.13  & [Tonf] \\
+    Corte Basal Máximo & 13.63 & [Tonf] \\
+    Período Predominante & 0.027 & [s] \\
+    $R^*$ & 1.330 & [-] \\
+    Factor de Mayoración & 1.000 & [-] \\
+    Factor de Minoración & 0.752 & [-] \\
+    Corte Basal Efectivo & 9.87  & [Tonf] \\
+    Momento Volcante & 25.66 & [Tonf-m] \\
+    Brazo de Palanca & 2.60  & [m] \bigstrut[b]\\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsubsection{Periodos y participación de masas}
+
+En la Tabla \ref{tabla-periodo-participacion} se detallan los períodos obtenidos para los modos en los cuales se alcanzó un 90\% de masa en las direcciones de análisis. Para el período en $x$ el modo 19 es el que mueve mayor cantidad de masa, un total de 33.19\%. Para el período en $y$ el modo 22 mueve mayor masa, un total de 38.89\%. Cabe destacar que los periodos obtenidos son bajos, lo cual hace sentido dado que la casa es una estructura bastante rígida dado su baja altura y la gran cantidad de muros (4\% en el eje x, 4.6\% en el eje y).
+
+\begin{longtable}{cccccccc}
+\caption{Períodos y participación de masas.}\label{tabla-periodo-participacion}\\
+\hline
+\multicolumn{1}{c}{\textbf{Modo}} & \textbf{T [s]} & \textbf{\% Mx} & \textbf{\% My} & \textbf{\% Rz} & \textbf{\% \boldmath{}\textbf{$\sum$}\unboldmath{}Mx} & \textbf{\% \boldmath{}\textbf{$\sum$}\unboldmath{}My} & \textbf{\% \boldmath{}\textbf{$\sum$}\unboldmath{}Rz} \bigstrut\\
+\hline
+\endfirsthead
+\hline
+\multicolumn{1}{|c}{\textbf{Modo}} & \textbf{T (s)} & \textbf{\% Mx} & \textbf{\% My} & \textbf{\% Rz} & \textbf{\% \boldmath{}\textbf{$\sum$}\unboldmath{}Mx} & \textbf{\% \boldmath{}\textbf{$\sum$}\unboldmath{}My} & \textbf{\% \boldmath{}\textbf{$\sum$}\unboldmath{}Rz} \bigstrut\\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+1     & 0.113 & 0.08  & 0.03  & 0.05  & 0.1   & 0.0   & 0.1 \bigstrut[t]\\
+    2     & 0.110 & 0.06  & 5.20  & 1.72  & 0.1   & 5.2   & 1.8 \\
+    3     & 0.100 & 0.01  & 5.00  & 0.90  & 0.1   & 10.2  & 2.7 \\
+    4     & 0.069 & 0.19  & 0.04  & 0.03  & 0.3   & 10.3  & 2.7 \\
+    5     & 0.068 & 14.79 & 0.01  & 3.71  & 15.1  & 10.3  & 6.4 \\
+    6     & 0.067 & 2.92  & 1.37  & 0.65  & 18.1  & 11.7  & 7.1 \\
+    7     & 0.063 & 10.33 & 0.05  & 3.31  & 28.4  & 11.7  & 10.4 \\
+    8     & 0.058 & 2.85  & 0.59  & 0.14  & 31.2  & 12.3  & 10.5 \\
+    9     & 0.056 & 0.66  & 0.24  & 0.65  & 31.9  & 12.6  & 11.2 \\
+    10    & 0.050 & 10.44 & 0.19  & 0.35  & 42.3  & 12.7  & 11.5 \\
+    11    & 0.047 & 0.04  & 11.61 & 1.11  & 42.4  & 24.4  & 12.6 \\
+    12    & 0.045 & 0.00  & 5.63  & 0.77  & 42.4  & 30.0  & 13.4 \\
+    13    & 0.041 & 0.07  & 0.52  & 0.04  & 42.4  & 30.5  & 13.4 \\
+    14    & 0.040 & 0.04  & 0.76  & 0.00  & 42.5  & 31.3  & 13.4 \\
+    15    & 0.038 & 11.38 & 0.02  & 0.02  & 53.9  & 31.3  & 13.5 \\
+    16    & 0.037 & 4.76  & 0.11  & 0.01  & 58.6  & 31.4  & 13.5 \\
+    17    & 0.036 & 0.00  & 3.46  & 1.38  & 58.6  & 34.9  & 14.8 \\
+    18    & 0.033 & 7.25  & 0.08  & 27.86 & 65.9  & 34.9  & 42.7 \\
+    \rowcolor[rgb]{ .851,  .851,  .851} 19    & 0.033 & 33.19 & 0.05  & 6.55  & 99.1  & 35.0  & 49.3 \\
+    20    & 0.030 & 0.60  & 2.99  & 0.82  & 99.7  & 38.0  & 50.1 \\
+    21    & 0.027 & 0.00  & 1.97  & 21.23 & 99.7  & 39.9  & 71.3 \\
+    \rowcolor[rgb]{ .851,  .851,  .851} 22    & 0.027 & 0.01  & 38.89 & 9.43  & 99.7  & 78.8  & 80.7 \\
+    23    & 0.025 & 0.01  & 20.98 & 19.17 & 99.7  & 99.8  & 99.9 \bigstrut[b]\\
+\hline
+\end{longtable}
+
+\newpage
+\subsubsection{Cortes basales}
+
+La tabla de cortes basales (Tabla \ref{tabla-cortes-basales}) fue obtenida a partir del resultado \textit{Story forces} de ETABS considerando un espectro sísmico inelástico \footnote{Reducido por el factor $1/R*$.}.
+
+\begin{table}[H]
+  \centering
+  \caption{Cortes basales.}
+  \resizebox{1\textwidth}{!}{
+  
+  \begin{tabular}{ccccccc}
+    \hline
+    \textbf{Combinación} & \textbf{P [tonf]} & \cellcolor[rgb]{ .949,  .949,  .949}\textbf{Vx [tonf]} & \cellcolor[rgb]{ .949,  .949,  .949}\textbf{Vy [tonf]} & \textbf{T [tonf-m]} & \textbf{Mx [tonf-m]} & \textbf{My [tonf-m]} \bigstrut\\
+    \hline
+    PP    & 49.59 & \cellcolor[rgb]{ .949,  .949,  .949}0.00 & \cellcolor[rgb]{ .949,  .949,  .949}0.00 & 0.00  & 251.26 & -192.24 \bigstrut[t]\\
+    SC    & 8.13  & \cellcolor[rgb]{ .949,  .949,  .949}0.00 & \cellcolor[rgb]{ .949,  .949,  .949}0.00 & 0.00  & 40.84 & -34.13 \\
+    EX Max & 0.00  & \cellcolor[rgb]{ .949,  .949,  .949}9.06 & \cellcolor[rgb]{ .949,  .949,  .949}0.35 & 45.90 & 0.92  & 23.57 \\
+    EY Max & 0.00  & \cellcolor[rgb]{ .949,  .949,  .949}0.37 & \cellcolor[rgb]{ .949,  .949,  .949}9.87 & 43.99 & 25.66 & 0.96 \\
+    ASD-C1 & 49.59 & \cellcolor[rgb]{ .949,  .949,  .949}0.00 & \cellcolor[rgb]{ .949,  .949,  .949}0.00 & 0.00  & 251.26 & -192.24 \\
+    ASD-C2 & 57.72 & \cellcolor[rgb]{ .949,  .949,  .949}0.00 & \cellcolor[rgb]{ .949,  .949,  .949}0.00 & 0.00  & 292.09 & -226.37 \\
+    ASD-C3.1 Max & 57.72 & \cellcolor[rgb]{ .949,  .949,  .949}9.06 & \cellcolor[rgb]{ .949,  .949,  .949}0.35 & 45.90 & 293.01 & -202.80 \\
+    ASD-C3.1 Min & 57.72 & \cellcolor[rgb]{ .949,  .949,  .949}-9.06 & \cellcolor[rgb]{ .949,  .949,  .949}-0.35 & -45.90 & 291.18 & -249.94 \\
+    ASD-C3.2 Max & 57.72 & \cellcolor[rgb]{ .949,  .949,  .949}0.37 & \cellcolor[rgb]{ .949,  .949,  .949}9.87 & 43.99 & 317.75 & -225.41 \\
+    ASD-C3.2 Min & 57.72 & \cellcolor[rgb]{ .949,  .949,  .949}-0.37 & \cellcolor[rgb]{ .949,  .949,  .949}-9.87 & -43.99 & 266.44 & -227.33 \\
+    ASD-C4.1 Max & 49.59 & \cellcolor[rgb]{ .949,  .949,  .949}9.06 & \cellcolor[rgb]{ .949,  .949,  .949}0.35 & 45.90 & 252.17 & -168.67 \\
+    ASD-C4.1 Min & 49.59 & \cellcolor[rgb]{ .949,  .949,  .949}-9.06 & \cellcolor[rgb]{ .949,  .949,  .949}-0.35 & -45.90 & 250.34 & -215.80 \\
+    ASD-C4.2 Max & 49.59 & \cellcolor[rgb]{ .949,  .949,  .949}0.37 & \cellcolor[rgb]{ .949,  .949,  .949}9.87 & 43.99 & 276.92 & -191.27 \\
+    ASD-C4.2 Min & 49.59 & \cellcolor[rgb]{ .949,  .949,  .949}-0.37 & \cellcolor[rgb]{ .949,  .949,  .949}-9.87 & -43.99 & 225.60 & -193.20 \bigstrut[b]\\
+    \hline
+  \end{tabular}
+  }
+  \label{tabla-cortes-basales}
+\end{table}
+\newpage
+\subsection{Verificación muros a corte}
+
+Considerando la resistencia prismática de la albañilería ($f'_m=150\frac{kgf}{cm^2}=14.71MPa$) se obtendrán los siguientes valores límites de resistencia admisible a esfuerzos de corte para cada caso (Resistencia del 100 \% de la albañilería y resistencia solo de la armadura .
+
+\begin{table}[H]
+  \centering
+  \caption{Resistencia admisible a esfuerzos de corte.}
+  \begin{tabular}{ccc}
+    \hline
+    \textbf{M/Vd} & \boldmath{}\textbf{$\tau_0 $ (Mpa)}\unboldmath{} & \boldmath{}\textbf{$\tau_1 $ (Mpa)}\unboldmath{} \bigstrut\\
+    \hline
+    $=0$  & 0,28  & 0,64 \bigstrut[t]\\
+    $\geq 1$ & 0,19  & 0,49 \bigstrut[b]\\
+    \hline
+  \end{tabular}
+  \label{resadm}
+\end{table}
+
+Con los resultados de ETABS se obtiene para cada pier:
+
+\begin{table}[H]
+  \centering
+  \caption{Esfuerzos solicitantes por pier.}
+  \begin{tabular}{cccccc}
+    \hline
+    \textbf{Pier} & \boldmath{}\textbf{$V_2 $ $ (tonf)$}\unboldmath{} & \boldmath{}\textbf{$M_3 $$(tonf \cdot m)$}\unboldmath{} & \boldmath{}\textbf{$d $$ (m)$}\unboldmath{} & \boldmath{}\textbf{$\tau_{sol} $$ (tonf/m^2)$}\unboldmath{} & \boldmath{}\textbf{$M/Vd$$ (-)$}\unboldmath{} \bigstrut\\
+    \hline
+    M1Y   & 1.61  & 1.86  & 3.9   & 2.95  & 0.30 \bigstrut[t]\\
+    M2Y   & 0.89  & 0.61  & 2.25  & 2.84  & 0.30 \\
+    M3Y   & 1.61  & 1.90  & 3.9   & 2.95  & 0.30 \\
+    M4Y   & 1.62  & 2.57  & 3.9   & 2.96  & 0.41 \\
+    M5Y   & 1.50  & 2.76  & 3.9   & 2.74  & 0.47 \\
+    M6Y   & 1.92  & 2.02  & 3.9   & 3.51  & 0.27 \\
+    M7Y   & 1.12  & 0.83  & 2.25  & 3.55  & 0.33 \\
+    M8Y   & 1.97  & 1.99  & 3.9   & 3.60  & 0.26 \\
+    M1X   & 1.50  & 1.09  & 3.3   & 3.25  & 0.22 \\
+    M2X   & 0.70  & 0.60  & 1.12  & 4.47  & 0.76 \\
+    M3X   & 0.73  & 0.49  & 0.98  & 5.35  & 0.68 \\
+    M4X   & 1.43  & 1.32  & 3.3   & 3.09  & 0.28 \\
+    M5X   & 1.78  & 2.28  & 3.82  & 3.33  & 0.33 \\
+    M6X   & 0.66  & 0.44  & 0.98  & 4.81  & 0.68 \\
+    M7X   & 1.01  & 0.80  & 1.64  & 4.42  & 0.48 \\
+    M8X   & 1.85  & 1.57  & 5.1   & 2.60  & 0.17 \\
+    M9X   & 0.12  & 0.10  & 0.37  & 2.33  & 2.24 \\
+    M10X  & 1.31  & 1.61  & 2.32  & 4.03  & 0.53 \\
+    M11X  & 1.56  & 2.33  & 2.77  & 4.03  & 0.54 \\
+    M12X  & 2.83  & 3.97  & 2.32  & 8.72  & 0.60 \\
+    M13X  & 1.67  & 1.16  & 3.3   & 3.61  & 0.21 \\
+    M14X  & 0.76  & 0.62  & 1.12  & 4.84  & 0.73 \\
+    M15X  & 0.74  & 0.49  & 0.98  & 5.42  & 0.67 \\
+    M16X  & 1.30  & 1.26  & 3.3   & 2.82  & 0.29 \\
+    M17X  & 0.67  & 0.44  & 0.97  & 4.93  & 0.68 \\
+    M18X  & 1.44  & 2.44  & 3.22  & 3.19  & 0.53 \\
+    M19X  & 1.16  & 0.78  & 1.64  & 5.06  & 0.41 \\
+    M20X  & 0.24  & 0.16  & 0.37  & 4.64  & 1.79 \\
+    M21X  & 1.94  & 2.02  & 5.1   & 2.71  & 0.20 \bigstrut[b]\\
+    \hline
+  \end{tabular}
+  \label{esfsolicitante}
+\end{table}
+
+Con los resultados anteriores se obtienen las tensiones resistentes en cada caso junto con la cuantía de armadura horizontal requerida considerando un acero de refuerzo A630-420H ($F_s=17000$ $tonf/m^2$).
+
+
+\begin{table}[H]
+  \centering
+  \caption{Resistencias y cuantías por pier.}
+  \begin{tabular}{cccc}
+    \hline
+    \textbf{Pier} & \boldmath{}\textbf{$\tau_{0resist} $ $ (tonf/m^2)$}\unboldmath{} & \boldmath{}\textbf{$\tau_{1resist} $ $ (tonf/m^2)$}\unboldmath{} & \boldmath{}\textbf{$\rho_h$ $ (-)$}\unboldmath{} \bigstrut\\
+    \hline
+    M1Y   & 25.34 & 59.18 & 0.00019 \bigstrut[t]\\
+    M2Y   & 25.26 & 59.05 & 0.00018 \\
+    M3Y   & 25.27 & 59.07 & 0.00019 \\
+    M4Y   & 24.34 & 57.51 & 0.00019 \\
+    M5Y   & 23.75 & 56.55 & 0.00018 \\
+    M6Y   & 25.57 & 59.57 & 0.00023 \\
+    M7Y   & 25.04 & 58.68 & 0.00023 \\
+    M8Y   & 25.66 & 59.72 & 0.00023 \\
+    M1X   & 26.02 & 60.32 & 0.00021 \\
+    M2X   & 21.16 & 52.24 & 0.00029 \\
+    M3X   & 21.91 & 53.48 & 0.00035 \\
+    M4X   & 25.49 & 59.43 & 0.00020 \\
+    M5X   & 24.99 & 58.60 & 0.00022 \\
+    M6X   & 21.90 & 53.46 & 0.00031 \\
+    M7X   & 23.69 & 56.45 & 0.00029 \\
+    M8X   & 26.50 & 61.12 & 0.00017 \\
+    M9X   & 19.00 & 48.64 & 0.00015 \\
+    M10X  & 23.23 & 55.68 & 0.00026 \\
+    M11X  & 23.15 & 55.55 & 0.00026 \\
+    M12X  & 22.56 & 54.57 & 0.00056 \\
+    M13X  & 26.11 & 60.47 & 0.00023 \\
+    M14X  & 21.40 & 52.63 & 0.00031 \\
+    M15X  & 21.94 & 53.53 & 0.00035 \\
+    M16X  & 25.35 & 59.21 & 0.00018 \\
+    M17X  & 21.85 & 53.39 & 0.00032 \\
+    M18X  & 23.26 & 55.72 & 0.00021 \\
+    M19X  & 24.33 & 57.50 & 0.00033 \\
+    M20X  & 19.00 & 48.64 & 0.00030 \\
+    M21X  & 26.16 & 60.55 & 0.00018 \bigstrut[b]\\
+    \hline
+  \end{tabular}
+  \label{resist}
+\end{table}
+
+\newpage
+Con las cuantías por muro definidas en la tabla anterior se calcula cada cuantas hiladas es necesario disponer armadura de refuerzo horizontal, considerando escalerillas de 4.2 milímetros de diámetro.
+
+\begin{table}[H]
+  \centering
+  \caption{Características albañilería y escalerillas.}
+  \begin{tabular}{|c|c|}
+    \hline
+    \boldmath{}\textbf{$b $ $ (m)$}\unboldmath{} & 0,14 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$A_{esc} $ $ (m^2)$}\unboldmath{} & 0,0000278 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$Escantillon $ $ (m)$}\unboldmath{} & 0,104 \bigstrut\\
+    \hline
+  \end{tabular}
+  \label{albaesca}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Disposición de armaduras horizontales.}
+  \begin{tabular}{cccc}
+    \hline
+    \textbf{Pier} & \boldmath{}\textbf{$\rho_h$ $ (-)$}\unboldmath{} & \textbf{N° Hiladas} & \textbf{N° max hiladas} \bigstrut\\
+    \hline
+    M1Y   & 0.00019 & 10    & 3 \bigstrut[t]\\
+    M2Y   & 0.00018 & 11    & 3 \\
+    M3Y   & 0.00019 & 11    & 3 \\
+    M4Y   & 0.00019 & 10    & 3 \\
+    M5Y   & 0.00018 & 11    & 3 \\
+    M6Y   & 0.00023 & 9     & 3 \\
+    M7Y   & 0.00023 & 9     & 3 \\
+    M8Y   & 0.00023 & 9     & 3 \\
+    M1X   & 0.00021 & 10    & 3 \\
+    M2X   & 0.00029 & 7     & 3 \\
+    M3X   & 0.00035 & 6     & 3 \\
+    M4X   & 0.00020 & 10    & 3 \\
+    M5X   & 0.00022 & 9     & 3 \\
+    M6X   & 0.00031 & 7     & 3 \\
+    M7X   & 0.00029 & 7     & 3 \\
+    M8X   & 0.00017 & 12    & 3 \\
+    M9X   & 0.00015 & 13    & 3 \\
+    M10X  & 0.00026 & 8     & 3 \\
+    M11X  & 0.00026 & 8     & 3 \\
+    M12X  & 0.00056 & 4     & 3 \\
+    M13X  & 0.00023 & 9     & 3 \\
+    M14X  & 0.00031 & 7     & 3 \\
+    M15X  & 0.00035 & 6     & 3 \\
+    M16X  & 0.00018 & 11    & 3 \\
+    M17X  & 0.00032 & 6     & 3 \\
+    M18X  & 0.00021 & 10    & 3 \\
+    M19X  & 0.00033 & 6     & 3 \\
+    M20X  & 0.00030 & 7     & 3 \\
+    M21X  & 0.00018 & 11    & 3 \bigstrut[b]\\
+    \hline
+  \end{tabular}
+  \label{esca}
+\end{table}
+
+\subsection{Verificación muros a esfuerzo axial a compresión}
+
+\begin{table}[H]
+  \centering
+  \caption{Verificación muros a esfuerzo axial.}
+  \itemresize{1}{
+ \begin{tabular}{|c|P{2cm}|P{1.7cm}|P{2.6cm}|P{2cm}|P{2cm}|P{1cm}|c|}
+    \hline
+    \textbf{Pier} & \textbf{Geometría} & \boldmath{}\textbf{$P_{max}$ (tonf)}\unboldmath{} & \textbf{Área efectiva (m2)} & \boldmath{}\textbf{$F_{max}$ (tonf/m2)}\unboldmath{} & \boldmath{}\textbf{$F_a$ (tonf/m2)}\unboldmath{} & \textbf{FU} & \textbf{¿Cumple?} \bigstrut\\
+    \hline
+    M1Y   & 1     & 5.62  & 0.55  & 10.29 & 67.49 & 0.15  & SI \bigstrut[t]\\
+    M2Y   & 2     & 3.92  & 0.32  & 12.46 & 67.49 & 0.18  & SI \\
+    M3Y   & 1     & 6.15  & 0.55  & 11.27 & 67.49 & 0.17  & SI \\
+    M4Y   & 1     & 4.57  & 0.55  & 8.36  & 67.49 & 0.12  & SI \\
+    M5Y   & 1     & 5.40  & 0.55  & 9.89  & 67.49 & 0.15  & SI \\
+    M6Y   & 1     & 5.49  & 0.55  & 10.06 & 67.49 & 0.15  & SI \\
+    M7Y   & 2     & 3.05  & 0.32  & 9.68  & 67.49 & 0.14  & SI \\
+    M8Y   & 1     & 5.48  & 0.55  & 10.04 & 67.49 & 0.15  & SI \\
+    M1X   & 3     & 3.83  & 0.46  & 8.29  & 74.64 & 0.11  & SI \\
+    M2X   & 4     & 2.09  & 0.16  & 13.31 & 74.38 & 0.18  & SI \\
+    M3X   & 5     & 1.81  & 0.14  & 13.22 & 74.38 & 0.18  & SI \\
+    M4X   & 6     & 2.41  & 0.46  & 5.21  & 74.94 & 0.07  & SI \\
+    M5X   & 7     & 5.84  & 0.53  & 10.91 & 74.64 & 0.15  & SI \\
+    M6X   & 5     & 1.80  & 0.14  & 13.14 & 74.38 & 0.18  & SI \\
+    M7X   & 8     & 2.85  & 0.23  & 12.40 & 74.38 & 0.17  & SI \\
+    M8X   & 9     & 3.87  & 0.71  & 5.42  & 74.94 & 0.07  & SI \\
+    M9X   & 10    & 0.60  & 0.05  & 11.62 & 71.16 & 0.16  & SI \\
+    M10X  & 11    & 2.84  & 0.32  & 8.74  & 67.49 & 0.13  & SI \\
+    M11X  & 12    & 3.55  & 0.39  & 9.15  & 67.49 & 0.14  & SI \\
+    M12X  & 13    & 3.79  & 0.32  & 11.67 & 67.49 & 0.17  & SI \\
+    M13X  & 3     & 3.80  & 0.46  & 8.22  & 74.64 & 0.11  & SI \\
+    M14X  & 4     & 2.11  & 0.16  & 13.45 & 74.38 & 0.18  & SI \\
+    M15X  & 5     & 1.81  & 0.14  & 13.16 & 74.38 & 0.18  & SI \\
+    M16X  & 6     & 2.41  & 0.46  & 5.22  & 74.94 & 0.07  & SI \\
+    M17X  & 14    & 1.91  & 0.14  & 14.06 & 71.16 & 0.20  & SI \\
+    M18X  & 15    & 4.38  & 0.45  & 9.72  & 74.64 & 0.13  & SI \\
+    M19X  & 8     & 3.03  & 0.23  & 13.21 & 74.38 & 0.18  & SI \\
+    M20X  & 16    & 0.81  & 0.05  & 15.66 & 74.38 & 0.21  & SI \\
+    M21X  & 9     & 3.82  & 0.71  & 5.34  & 74.94 & 0.07  & SI \bigstrut[b]\\
+    \hline
+  \end{tabular}
+  }
+\end{table}
+
+\subsection{Verificación muros a flexo.compresión}
+
+\def\imgflexocompresion {12cm}
+
+\begin{images}[\label{geom1}]{Verificación flexo-compresión geometría 1, muros M1Y, M3Y, M4Y, M5Y, M6Y y M8Y.}
+\addimage{resultados/g1_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g1_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 2, muros M2Y y M7Y.}
+\addimage{resultados/g2_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g2_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 3, muros M1X y M13X.}
+\addimage{resultados/g3_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g3_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 4, muros M2X y M14X.}
+\addimage{resultados/g4_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g4_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 5, muros M3X, M6X y M15X.}
+\addimage{resultados/g5_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g5_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}[\label{geom6}]{Verificación flexo-compresión geometría 6, muros M4X y M16X.}
+\addimage{resultados/g6_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g6_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 7, muro M5X.}
+\addimage{resultados/g7_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g7_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 8, muro M7X.}
+\addimage{resultados/g8_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g8_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}[\label{geom9}]{Verificación flexo-compresión geometría 9, muros M8X y M21X.}
+\addimage{resultados/g9_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g9_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 10, muro M9X.}
+\addimage{resultados/g10_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g10_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 11, muro M10X.}
+\addimage{resultados/g11_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g11_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 12, muro M11X.}
+\addimage{resultados/g12_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g12_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 13, muro M12X.}
+\addimage{resultados/g13_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g13_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 14, muro M17X.}
+\addimage{resultados/g14_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g14_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 15, muro M18X.}
+\addimage{resultados/g15_in}{width=\imgflexocompresion}{En el plano.}
+\addimage{resultados/g15_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\begin{images}{Verificación flexo-compresión geometría 16, muro 20X.}
+\addimage{resultados/g16_in}{width=\imgflexocompresion}{En el plano.}
+\addimagenewline
+
+\addimage{resultados/g16_out}{width=\imgflexocompresion}{Fuera del plano.}
+\end{images}
+
+\newpage
+\subsection{Verificación deformaciones máximas}
+
+Dado que la estructura no posee un diafragma rígido de piso, ello es, una losa que permita compatibilizar los desplazamientos en planta de los muros, se decidió por determinar las deformaciones máximas de los muros como el máximo desplazamiento de los nodos de techo de los muros. La figura \ref{desplazamientos} ilustra los desplazamientos nodales para cada una de las combinaciones de carga definidas.%. (Capítulo \ref{combcargas}).
+
+\insertimage[\label{desplazamientos}]{resultados/despl}{width=9.9cm}{Desplazamiento nodos de la estructura a nivel de techo.}
+
+\insertimage{resultados/despl-log}{width=9.9cm}{Detalle desplazamientos, escala logarítmica.}
+
+Es posible observar que el desplazamiento máximo obtenido en cada eje no supera el límite establecido por la norma (Apartado 5.9.3), equivalente a $\frac{h}{1000} = \frac{260cm}{1000} = 0.26cm$ por tanto se cumple con las deformaciones límites.\newpage
+
+Un análisis similar se realizó considerando los drift a nivel de nodo \textit{joint drifts} en ETABS. La figura \ref{drift} ilustra los drift para cada una de las combinaciones de carga, la figura \ref{driftlog} detalla en escala logarítmica dichos difts.
+
+\insertimage[\label{drift}]{resultados/drift}{width=10cm}{Drift de nodos de la estructura.}
+
+\insertimage[\label{driftlog}]{resultados/drift-log}{width=10cm}{Detalle de drifts en escala logarítmica}
+
+%\subsection{Limitaciones de la norma}

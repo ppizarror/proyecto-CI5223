@@ -1,0 +1,120 @@
+% Template:     Informe/Reporte LaTeX
+% Documento:    Índice
+% Versión:      6.1.6 (14/12/2018)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R. @ppizarror
+%        Facultad de Ciencias Físicas y Matemáticas
+%        Universidad de Chile
+%        pablo.pizarro@ing.uchile.cl, ppizarror.com
+%
+% Manual template: [https://latex.ppizarror.com/Template-Informe/]
+% Licencia MIT:    [https://opensource.org/licenses/MIT/]
+
+\ifthenelse{\equal{\showindex}{true}}{
+	\newpage
+	\begingroup
+	\sectionfont{\color{\indextitlecolor} \fontsizetitlei \styletitlei \selectfont}
+	\ifthenelse{\equal{\addemptypagetwosides}{true}}{
+		\checkoddpage
+		\ifoddpage
+		\else
+			\newpage
+			\null
+			\thispagestyle{empty}
+			\newpage
+			\addtocounter{page}{-1}
+		\fi}{
+	}
+	\ifthenelse{\equal{\addindextobookmarks}{true}}{
+		\belowpdfbookmark{\nomltcont}{contents}}{
+	}
+	\tocloftpagestyle{fancy}
+	\ifthenelse{\equal{\showdotontitles}{true}}{
+		\def\cftsecaftersnum {.}
+		\def\cftsubsecaftersnum {.}
+		\def\cftsubsubsecaftersnum {.}
+		\def\cftsubsubsubsecaftersnum {.}
+		\def\cftsecnumwidth {1.9em}
+\def\cftsubsecnumwidth {2.57em}
+\renewcommand\cftsubsubsecnumwidth{3.35em}
+		\setlength{\cftsubsecindent}{1.91em}
+\setlength{\cftsubsubsecindent}{4.48em}
+		}{
+	}
+	\def\cftfigaftersnum {\charafterobjectindex\enspace}
+	\def\cftsubfigaftersnum {\charafterobjectindex\enspace}
+	\def\cfttabaftersnum {\charafterobjectindex\enspace}
+	\def\cftlstlistingaftersnum {\charafterobjectindex\enspace}
+	\renewcommand{\cftdot}{\charnumpageindex}
+	\ifthenelse{\equal{\showlinenumbers}{true}}{
+		\nolinenumbers}{
+	}
+	\ifthenelse{\equal{\objectindexindent}{true}}{
+		\def\cftlstlistingindent {1.495em}
+	}{
+		\setlength{\cfttabindent}{0in}
+		\setlength{\cftfigindent}{0in}
+		\setlength{\cftsubfigindent}{0in}
+		\setlength{\cftfigindent}{0in}
+		\def\cftlstlistingindent {0.01em}
+	}
+	\ifthenelse{\equal{\equalmarginnumobject}{true}}{
+		\ifthenelse{\equal{\showsectioncaption}{none}}{
+			\def\cftdefautnumwidth {2.3em}
+		}{
+		\ifthenelse{\equal{\showsectioncaption}{sec}}{
+			\def\cftdefautnumwidth {3.0em}
+		}{
+		\ifthenelse{\equal{\showsectioncaption}{ssec}}{
+			\def\cftdefautnumwidth {3.7em}
+		}{
+		\ifthenelse{\equal{\showsectioncaption}{sssec}}{
+			\def\cftdefautnumwidth {4.4em}
+		}{
+		\ifthenelse{\equal{\showsectioncaption}{ssssec}}{
+			\def\cftdefautnumwidth {5.1em}
+		}{
+			\throwbadconfig{Valor configuracion incorrecto}{\showsectioncaption}{none,sec,ssec,sssec,ssssec}}}}}
+		}
+		\def\cftfignumwidth {\cftdefautnumwidth}
+		\def\cftsubfignumwidth {\cftdefautnumwidth}
+		\def\cfttabnumwidth {\cftdefautnumwidth}
+		\def\cftlstlistingnumwidth {\cftdefautnumwidth}}{
+	}
+	\ifthenelse{\equal{\showindexofcontents}{true}}{\tableofcontents}{}
+	\newpage
+	\iftotalfigures
+		\ifthenelse{\equal{\showindexoffigures}{true}}{
+			\ifthenelse{\equal{\indexforcenewpage}{true}}{\newpage}{}
+			\listoffigures
+		}{}
+	\fi
+	\newpage
+	\iftotaltables
+		\ifthenelse{\equal{\showindexoftables}{true}}{
+			\ifthenelse{\equal{\indexforcenewpage}{true}}{\newpage}{}
+			\listoftables
+		}{}
+	\fi
+	\iftotallstlistings
+		\ifthenelse{\equal{\showindexofcode}{true}}{
+			\ifthenelse{\equal{\indexforcenewpage}{true}}{\newpage}{}
+			\lstlistoflistings
+		}{}
+	\fi
+	\endgroup
+	\newpage
+	\ifthenelse{\equal{\addemptypagetwosides}{true}}{
+		\vfill
+		\checkoddpage
+		\ifoddpage
+			\newpage
+			\null
+			\thispagestyle{empty}
+			\newpage
+			\addtocounter{page}{-1}
+		\else
+		\fi}{
+	}
+}{}

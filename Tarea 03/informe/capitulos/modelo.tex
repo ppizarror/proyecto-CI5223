@@ -1,0 +1,363 @@
+\newpage
+\section{Definición del modelo}
+
+\subsection{Antecedentes análisis sísmico}
+
+\subsubsection{Zona sísmica}
+    
+    La estructura se encuentra en la ciudad de Illapel, declarada como zona sísmica tipo 3 según la norma Chilena NCh 433 Of 1996:2012 (Figura \ref{zona-sismica}).
+
+    \insertimage[\label{zona-sismica}]{modelo/zonasismica}{width=8cm}{Zona sísmica ciudad de Illapel, Figura 4.1 norma NCh 433.}
+    
+    \begin{table}[H]
+      \centering
+      \caption{Valor de la aceleración efectiva $A_o$, Tabla 6.2 NCh433.}
+        \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Zona sísmica} & \boldmath{}\textbf{$A_o$}\unboldmath{} \bigstrut\\
+        \hline
+        1     & 0.20g \bigstrut[t]\\
+        2     & 0.30g \\
+        3     & 0.40g \bigstrut[b]\\
+        \hline
+        \end{tabular}%
+      \label{tab:zonasismicaAo}%
+    \end{table}%
+    
+    Luego, según la tabla \ref{tab:zonasismicaAo} la aceleración efectiva del sitio corresponde a $A_o=0.4g=3.2 \frac{m}{s^2}$.
+    
+\subsubsection{Espectro de diseño}
+    
+    El espectro de diseño elástico se obtuvo según punto 6.3.5 de NCh433. Una vez se calcule el periodo predominante en los ejes $x$ e $y$ se puede calcular el espectro elástico reducido por ductilidad.
+
+    \insertimage{modelo/elastico}{width=7cm}{Espectro de diseño, según NCh433.}
+    
+    \subsubsection{Clasificación suelo y descripción de características generales}
+    
+    El tipo de suelo de la estructura está clasificado como tipo D. Según la norma NCh 433 el suelo posee los siguientes parámetros:
+
+    \begin{table}[H]
+      \centering
+      \caption{Parámetros que dependen del tipo de suelo.}
+        \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Parámetro} & \textbf{Valor} \bigstrut\\
+        \hline
+        S     & 1.20 \bigstrut[t]\\
+        $T_o$(s) & 0.75 \\
+        $T'$(s) & 0.85 \\
+        n     & 1.80 \\
+        p     & 1.0 \bigstrut[b]\\
+        \hline
+        \end{tabular}%
+    \end{table}%
+    
+    \subsubsection{Clasificación tipo de estructuración}
+    
+    El tipo de estructuración es del tipo muro de albañilería armada. En este sentido el muro tiene la función de transmitir cargas tipo gravitacionales (compresión) a las fundaciones y resistir cargas cortantes, tracciones y compresiones por flexión en en caso de un sismo. \\
+
+    De acuerdo a lo estipulado en la norma NCh433 tablas 5.1 y 6.1 se tienen los siguientes parámetros de modificación de acuerdo al tipo de estructuración, en donde $R$ y $R_o$ corresponden a factores de reducción e $I$ es el nivel de importancia de la estructura.
+    
+    \begin{table}[H]
+      \centering
+      \caption{Parámetros diseño sísmico tipo de estructuración.}
+        \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Parámetro} & \textbf{Valor} \bigstrut\\
+        \hline
+        R     & 4 \bigstrut\\
+        \hline
+        $R_o$ & 4 \bigstrut\\
+        \hline
+        I     & 1 \bigstrut\\
+        \hline
+        \end{tabular}%
+    \end{table}%
+
+\newpage
+\subsection{Definición sistema estructural en ETABS}
+
+    \subsubsection{Definición de materiales}
+    
+    Se definieron dos materiales en el modelo ETABS, uno correspondiente al tipo \textit{Masonry} (Ladrillo) y otro para las cadenas de hormigón. El ladrillo escogido para el diseño de la estructura corresponde al ladrillo cerámico \quotes{Santiago 9E}, éste fue diseñado considerando una resistencia a compresión igual a $0.25f'm$, con un módulo de rigidez de $1000f'm$ y un módulo de corte igual a $0.3f'm$, en donde $f'm=150\frac{kgf}{cm^2}$. La figura \ref{etabs-alb} ilustra la definición del material de \texttt{LADRILLO} en ETABS.
+    
+    \begin{images}[\label{etabs-alb}]{Propiedades material ladrillos de albañilería cerámica generados en ETABS.}
+        \addimage{modelo/etabs-mat-1}{height=6.2cm}{}
+        \addimage{modelo/etabs-mat-2}{height=6.2cm}{}
+    \end{images}
+    
+    Para el hormigón se definió un material del tipo \textit{Concrete} con una resistencia a la compresión $f'c$ de 20MPa, con un módulo elástico de $4700\sqrt{f'c}$. La figura ilustra la definición del material de hormigón, \texttt{G20 (10)} en ETABS.
+    
+    \insertimage{modelo/etabs-mat-horm}{height=6.2cm}{Definición del hormigón.}
+
+\newpage    
+\subsubsection{Definición de secciones}
+    
+    Se definieron dos tipos distintas de secciones, un muro, correspondiente al tipo \textit{shell-thin}, y una viga de hormigón. El muro posee un ancho de 14cm, igual al ancho de los ladrillos utilizados, y de material base LADRILLO.
+    
+    \insertimage{modelo/etabs-secc-wall}{width=8.5cm}{Definición del muro en ETABS.}
+    
+    Para el caso de la viga de hormigón se definió un elemento tipo \textit{frame} de 52 centímetros de alto, y ancho igual al ancho del muro, 14cm.
+    
+    \insertimage{modelo/etabs-secc-cadena}{width=8.5cm}{Definición de las vigas en ETABS.}
+
+\newpage
+\subsubsection{Definición de la grilla}
+
+    A modo de establecer el emplazamiento de los muros en la estructura se definió la grilla en ETABS representada en la figura \ref{grid}, las dimensiones de los ejes de referencia se obtuvieron a partir de la caracterización geométrica de la estructura, trabajo realizado en la entrega N°2 del curso.
+    
+    \insertimage[\label{grid}]{modelo/grid}{width=0.9\linewidth}{Definición de la grilla.}
+    
+    \insertimage[]{modelo/story}{width=0.7\linewidth}{Story data.}
+
+\newpage
+\subsubsection{Definición de muros y cadena}
+    
+    Las características geométricas de los muros fueron definidas a partir de los planos de la casa diseñados en la segunda entrega del curso. En ETABS se crearon los muros a partir del plano en planta de la estructura (elementos tipo \textit{wall}), las extrusiones se generaron a partir de la definición de planos de referencia.
+    
+    \begin{images}{Definición de la estructura en ETABS.}
+        \addimage{modelo/etabs1}{width=8cm}{Definición de los muros y cadena.}
+        \addimage{modelo/etabs2}{width=8cm}{Vista extruída de la estructura.}
+    \end{images}
+    
+    Con el propósito de mejorar la precisión de los resultados con el software se realizó un \textit{mesh} de los muros con tal de lograr elementos cuadrados, mejorando así el nivel de detalle de la estructura a nivel de elementos finitos.
+
+\subsubsection{Sistema de apoyos}
+    
+    Los apoyos de la estructura fueron definidos utilizando apoyos simples, para ello, tras seleccionar todos los \textit{restraints} de la estructura se seleccionó la opción mostrada en la Figura \ref{jointsestructura}.
+    
+    \insertimage[\label{jointsestructura}]{modelo/etabs-rec-joints}{width=6cm}{Definición de apoyos simples en la estructura.}
+    
+\subsubsection{Definición de cargas}
+Hay dos tipos de cargas que se definen en el modelo en ETABS, una carga distribuida uniforme que corresponde al peso del tímpano, y otras cargas puntuales que corresponden a la descarga de cerchas de madera en la cadena que conforman la estructura de techo del edificio.
+
+    \insertimage[]{modelo/def-cargas}{width=11cm}{Definición de sobrecarga en ETABS.}
+
+Como se puede apreciar en la figura anterior, los tímpanos, modelados como cargas distribuidas uniformes se ubican a lo largo de los ejes A y C, mientras que las cerchas de techo descargan a lo largo de los ejes 1 y 4 de la figura.
+
+\begin{itemize}
+    \item \textbf{Cercha de madera}\\
+    Se dispondrán 4 cerchas de madera apoyadas en los ejes 1 y 4 con la siguiente configuración:
+
+    \insertimage[]{modelo/cercha}{width=15cm}{Dimensiones generales y forma de las cerchas de madera en milímetros.}
+
+    \newpage
+   Las propiedades de la madera a utilizar vienen dadas por:
+    
+    \begin{table}[H]
+  \centering
+  \caption{Propiedades de la vigas de madera a utilizar.}
+  \begin{tabular}{|l|c|}
+    \hline
+    \boldmath{}\textbf{$\rho_{madera}$ $ (kgf/m^3)$}\unboldmath{} & 550 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$b_{viga} $ $(mm)$}\unboldmath{} & 100 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$t_{viga}$ $ (mm)$}\unboldmath{} & 50 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{Volumen total de cercha ($m^3$)}\unboldmath{} & 0,157 \bigstrut\\
+    \hline
+  \end{tabular}
+  \label{vigamadera}
+\end{table}
+
+     De acuerdo a la forma de las cerchas, es necesaria la colocación de cinco costaneras de techo, las cuales tributarán tanto a las cerchas como a los tímpanos. 
+     
+         \begin{table}[H]
+      \centering
+      \caption{Características costaneras de techo.}
+      \begin{tabular}{|c|c|}
+        \hline
+        \textbf{N° costaneras} & 5 \bigstrut\\
+        \hline
+        \textbf{Largo costaneras (m)} & 8.54 \bigstrut\\
+        \hline
+        \textbf{Volumen total costaneras (m3)} & 0.0427 \bigstrut\\
+        \hline
+      \end{tabular}
+      \label{costarneras}
+    \end{table}
+
+    En base a la información definida, se producen las cargas puntuales producto de las cerchas y de las costaneras. Cabe destacar que las costaneras generan cargas puntuales que llegan tanto a los apoyos de las cercha como a los de los tímpanos.
+    
+        \begin{table}[H]
+      \centering
+      \caption{Cargas puntuales en la estructura.}
+      \begin{tabular}{|c|c|}
+        \hline
+        \boldmath{}\textbf{$P_{cercha} $ $(kgf)$}\unboldmath{} & 43.175 \bigstrut\\
+        \hline
+        \boldmath{}\textbf{$P_{cost.int} $ $ (kgf)$}\unboldmath{} & 11.743 \bigstrut\\
+        \hline
+        \boldmath{}\textbf{$P_{cost.timp}$ $(kgf)$}\unboldmath{} & 5.871 \bigstrut\\
+        \hline
+      \end{tabular}
+      \label{cargaspuntuales}
+    \end{table}
+
+
+    \item \textbf{Tímpanos}\\
+    Los dos tímpanos que posee la estructura ubicados a lo largo de los ejes A y C se modelan como cargas distribuidas uniformes para mayor simplicidad. De todas formas este diseño es conservador puesto que se considera el peso del tímpano por unidad de largo en su punto más alto, es decir en el centro. Considerando las siguientes características del tímpano:
+    
+    \begin{table}[H]
+  \centering
+  \caption{Propiedades de la albañilería del tímpano.}
+  \begin{tabular}{|c|c|}
+    \hline
+    \boldmath{}\textbf{$\rho_{alb} $ $ (tonf/m^3)$}\unboldmath{} & 1.8 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$t $ $ (m)$}\unboldmath{} & 0.14 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$h_{timp} $ $ (m)$}\unboldmath{} & 1.04 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$L_{tim} $ $ (m)$}\unboldmath{} & 10 \bigstrut\\
+    \hline
+  \end{tabular}
+  \label{albtimpano}
+\end{table}
+
+    \begin{table}[H]
+  \centering
+  \caption{Propiedades de la cadena del tímpano.}
+  \begin{tabular}{|c|c|}
+    \hline
+    \boldmath{}\textbf{$\rho_{cad} $ $ (tonf/m^3)$}\unboldmath{} & 2.5 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$t$ $(m)$}\unboldmath{} & 0.14 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$h_{cad}$ $ (m)$}\unboldmath{} & 0.12 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$L_{cad} $ $ (m)$}\unboldmath{} & 10.49 \bigstrut\\
+    \hline
+  \end{tabular}
+  \label{cadtimpano}
+\end{table}
+
+La carga distribuida producto del peso del tímpano (albañilería y cadena) junto con las cargas puntuales recibidas por las costaneras viene dada por:
+
+\begin{table}[H]
+  \centering
+  \caption{Carga distribuida generada por el tímpano y costaneras.}
+  \begin{tabular}{|c|c|}
+    \hline
+    \boldmath{}\textbf{$Q_{timp} $ $ (kgf/m)$}\unboldmath{} & 262.08 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$Q_{cad} $ $ (kgf/m)$}\unboldmath{} & 42.0 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$Q_{total} $ $ (kgf/m)$}\unboldmath{} & 307.02 \bigstrut\\
+    \hline
+  \end{tabular}
+  \label{kdistr}
+\end{table}
+
+Es necesario destacar que los tímpanos definidos se estructuran con la armadura mínima, esto se ve reflejado a continuación:
+
+\insertimage[]{modelo/armaduratimpano}{width=15cm}{Armadura presente en los tímpanos.}
+    
+\end{itemize}
+
+En resumen, las cargas a aplicar al modelo ETABS corresponden a:
+
+\begin{table}[H]
+  \centering
+  \caption{Solicitaciones a aplicar al modelo.}
+  \begin{tabular}{|c|c|}
+    \hline
+    \boldmath{}\textbf{$P_{tot.\ cercha} $ $ (tonf)$}\unboldmath{} & 0.0549 \bigstrut\\
+    \hline
+    \boldmath{}\textbf{$Q_{total} $ $ (tonf/m)$}\unboldmath{} & 0.308 \bigstrut\\
+    \hline
+  \end{tabular}
+  \label{solicitaciones}
+\end{table}
+
+\newpage
+\subsubsection{Combinaciones de cargas} \label{combcargas}
+    
+    Los elementos estructurales serán diseñados para aquella combinación de cargas que genere la condición más desfavorable, en cuanto a su resistencia límite requerida. Los estados de carga serán modificados por factores de mayoración o minoración, si corresponde, de acuerdo a la combinación general de cargas indicada en la norma NCh3171. Se tendrán dos casos:
+    \newcommand{\caquita}{0.8cm} 
+    
+    \begin{itemize}
+        \item Para la albañilería se considerará lo indicado en el apartado 9.2.1, de combinaciones de cargas nominales que se usan en el método de tensiones admisibles (ASD), en que las combinaciones a utilizar serán:
+            
+                \hspace{\caquita} C1          $=PP$
+                
+                \hspace{\caquita} C2          $=PP+SC$
+                
+                \hspace{\caquita} C3.1        $=PP+SC\pm E_x$
+                
+                \hspace{\caquita} C3.2        $=PP+SC\pm E_y$
+                
+                \hspace{\caquita} C4.1        $=PP\pm E_x$
+                
+                \hspace{\caquita} C4.2        $=PP\pm E_y$
+        \item Para el hormigón armado se considerará lo indicado en el apartado 9.1.1. de combinaciones básicas, según el método de los estados límite (LRFD), en que las combinaciones a utilizar serán:
+        
+            \hspace{\caquita} C1          $=1,4PP$
+    
+            \hspace{\caquita} C2          $=1,2PP+1,6SC$
+            
+            \hspace{\caquita} C3.1        $=1,2PP+SC\pm1,4E_x$
+            
+            \hspace{\caquita} C3.2        $=1,2PP+SC\pm1,4E_y$
+            
+            \hspace{\caquita} C4.1        $=0,9PP\pm1,4E_x$
+            
+            \hspace{\caquita} C4.2        $=0,9PP\pm1,4E_y$
+    
+    \end{itemize}
+    \insertimage[]{modelo/load-comb}{width=9cm}{Definición combinación de carga ASD en ETABS.}
+
+\subsubsection{Análisis modal espectral}
+
+    A modo de estudiar la respuesta modal espectral de la estructura se definió un análisis del tipo \textit{Eigen}, con 100 modos de estudio\footnote{A pesar de que tan solo se requieren 24 para el estudio íntegro de la estructura.}. Para el peso sísmico se definió un total del 100\% del peso propio y un 25\% de la sobrecarga, tal como se ilustra en la Figura .
+    
+    \insertimage[]{modelo/caso-modal}{width=9cm}{Definición análisis modal en ETABS.}
+    
+    \insertimage[]{modelo/mass-source}{width=9cm}{Fuente de masa en ETABS.}
+
+\subsubsection{Definición de piers y geometrías}
+
+    A cada uno de los muros se le asignó un \textit{pier} (etiqueta de muro) distinto en función de su tipo, considerando para ello geometría y condiciones de apoyo. Esto se realizó para estudiar los esfuerzos máximos (axial, momento, corte) en cada configuración de muro.
+    
+    \insertimage{modelo/muros-planta}{width=6.2cm}{Definición de piers en planta.}
+    
+    \begin{images}{Definición de piers en elevaciones.}
+    \addimage{modelo/muros-elev-1}{width=7cm}{Elevación 1.}
+    \addimage{modelo/muros-elev-2}{width=7cm}{Elevación 2.}
+    \addimage{modelo/muros-elev-3}{width=7cm}{Elevación 3.}
+    \addimage{modelo/muros-elev-4}{width=7cm}{Elevación 4.}
+    \end{images}
+    
+    A modo de simplificar los resultados se agruparon piers en geometrías de iguales propiedades, tales como el ancho, el largo, las condiciones de apoyo y los diámetros de las barras de armadura de punta.
+    
+    \begin{table}[H]
+      \centering
+      \caption{Definición de geometrías.}
+      \itemresize{1.0}{
+      
+      \begin{tabular}{ccccc}
+        \hline
+        \textbf{Geometría} & \textbf{Piers} & \textbf{Alto (cm)} & \textbf{Largo (cm)} & \boldmath{}\textbf{$\phi$ (mm)}\unboldmath{} \bigstrut\\
+        \hline
+        1     & M1Y, M3Y, M4Y, M5Y, M6Y, M8Y & 260   & 390   & 12 \bigstrut[t]\\
+        2     & M2Y, M7Y & 260   & 225   & 12 \\
+        3     & M1X, M13X & 94.6  & 330   & 12 \\
+        4     & M2X, M14X & 113.4 & 112   & 10 \\
+        5     & M3X, M6X, M15X & 113.4 & 98    & 10 \\
+        6     & M4X, M16X & 52    & 330   & 12 \\
+        7     & M5X   & 94.6  & 382   & 12 \\
+        8     & M7X   & 113.4 & 164   & 10 \\
+        9     & M8X, M21X & 52    & 510   & 12 \\
+        10    & M9X   & 208   & 37    & 12 \\
+        11    & M10X  & 260   & 232   & 12 \\
+        12    & M11X  & 260   & 277   & 12 \\
+        13    & M12X  & 260   & 232   & 12 \\
+        14    & M17X  & 208   & 97    & 12 \\
+        15    & M18X  & 94.6  & 322   & 12 \\
+        16    & M20X  & 113.4 & 37    & 10 \bigstrut[b]\\
+        \hline
+      \end{tabular}
+      
+      }
+    \end{table}

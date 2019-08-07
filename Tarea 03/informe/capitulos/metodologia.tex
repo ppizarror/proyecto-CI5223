@@ -1,0 +1,218 @@
+\newpage
+\section{Metodología de cálculo}
+
+\subsection{Diseño de muros al corte}
+Para el diseño de muros al corte deben analizarse dos casos según la normativa, primero cuando el muro de albañilería resiste todo el esfuerzo de corte, y cuando la armadura está diseñada para resistir todo el corte.
+
+\begin{itemize}
+    \item En primer lugar, sin considerar armadura de corte se define la resistencia admisible de la albañilería ($\tau_0$)  como:
+    
+    \insertgatheranum{Si \quad \frac{M}{Vd}=0 \Rightarrow \tau_0=0,13\sqrt{f'_m }\leq 0,28\\
+    Si \quad \frac{M}{Vd}=1 \Rightarrow \tau_0=0,06\sqrt{f'_m }\leq 0,19}
+    \item Luego, considerando una armadura capaz de resistir todo el corte se define la resistencia admisible de la armadura ($\tau_1$)  como:
+    
+    \insertgatheranum{Si \quad \frac{M}{Vd}=0 \Rightarrow \tau_1=0,17\sqrt{f'_m }\leq 0,84\\
+    Si \quad \frac{M}{Vd}=1 \Rightarrow \tau_1=0,13\sqrt{f'_m }\leq 0,52}
+\end{itemize}
+
+Una vez definido lo anterior, con los resultados del modelo en ETABS por piers, se obtendrán las solicitaciones por corte y momento de cada pier junto con sus largos respectivos.\\
+
+Para analizar la resistencia de cada muro se debe proceder de la siguiente forma:
+
+\begin{itemize}
+    \item Se calcula la tensión de corte solicitante como:
+    \insertequationanum{\tau_{sol}=\frac{V_{sol}}{d \cdot b}}
+    \vspace{-0.5cm}
+    \item Se define el factor:
+    \insertequationanum{\frac{M_{sol}}{V_{sol}\cdot d}}
+    Con este. y las resistencias admisibles calculadas en cada caso, se obtiene la resistencia del muro en las dos situaciones ($\tau_{0resist}$ y $\tau_{1resist}$ ).
+    \item  Utilizando la tensión resistente que considera solo la resistencia de la armadura, se compara  con el esfuerzo de corte solicitante. En caso de no resistir las solicitaciones será necesario rediseñar el muro.
+    
+    \item Para la estimación de armadura horizontal necesaria es necesario determinar la cuantía de armadura horizontal requerida. Esta viene dada por:
+     \insertgatheranum{Si \quad \tau_{1resist}\leq \tau_{0resist} \Rightarrow \rho_H=0.0006\\
+    Si \quad \tau_{1resist} > \tau_{0resist} \Rightarrow \rho_H=\frac{1,1\cdot V_{sol}}{b\cdot F_s \cdot d}}
+    
+    \item Por último, con la cuantía calculada, se determina cada cuantas hiladas se debe colocar armadura horizontal o escalerillas.
+    \insertequationanum{N\degree \quad hiladas=\frac{A_{escalerilla}}{\rho_H  \cdot b \cdot Escantillon} \leq 3}
+
+\end{itemize}
+
+\subsection{Verificación de muros a esfuerzo axial}
+
+La verificación de los muros a esfuerzo axial está regida bajo el apartado 5.2.3.1 de la norma NCh1928, en ella se indica que ninguno de los muros la siguiente tensión de compresión axial:
+
+\insertequationanum{F_a = \begin{cases}
+0.2 f'm \bigg( 1- \pow{\big( \frac{h}{40t}\big)}{3}\bigg) & \text{Construcciones con inspección especializada} \\
+0.1 f'm \bigg( 1- \pow{\big( \frac{h}{40t}\big)}{3}\bigg) & \text{Construcciones sin inspección especializada} \\
+\end{cases}}
+\vspace{-0.4cm}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lp{1cm}p{9.0cm}}
+		En donde:	& $f'm$ & Resistencia prismática de la albañilería, \texttt{[kgf/cm2]}.\\
+		& $h$ & Menor valor entre la longitud de pandeo vertical y la distancia libre entre soportes laterales; en caso que el muro tenga algún borde libre se debe usar la longitud de pandeo vertical, \texttt{[cm]}.\\
+		& $t$ & Espesor del muro, \texttt{[cm]}.\\
+	\end{tabular}
+\end{table}
+
+Para el cálculo se asume la hipótesis de que las casas se construyen con inspección especializada.
+
+\subsection{Verificación de muros a flexo-compresión}
+
+El objetivo del diseño de muros a flexo-compresión es obtener la curva de interacción P-M considerando geometría y refuerzos de cada muro, la cual debe ser la envolvente de todos los casos de análisis. Esta curva se realiza asumiendo diferentes estados de esfuerzos internos, considerando en dichos cálculos 4 estados:
+
+\begin{enumerate}
+    \item La sección se encuentra completamente comprimida.
+    \item La profundidad del bloque de compresión es tal que no hay ninguna barra de refuerzo vertical en tracción.
+    \item Distribución de deformaciones axiales de la sección transversal genera tensiones de tracción en las barras de refuerzo verticales. Controla compresión.
+    \item Distribución de deformaciones axiales de la sección transversal genera tensiones de tracción en las barras de refuerzo verticales. Controla tracción.
+\end{enumerate}
+
+Los cuatro casos anteriores se ilustran en el siguiente esquema, obtenido de los apuntes de cátedra.
+
+\insertimage{metodologia/flexocomp-teoria}{width=14cm}{Curva teórica de flexocompresión para un muro de albañilería armada.}
+
+En primer lugar se define el módulo elástico y las tensiones admisibles de cada uno de los materiales considerando el caso estático o dinámico (sismo):
+
+\begin{table}[H]
+  \centering
+  \caption{Propiedades de materiales.}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    Módulo de elasticidad albañilería (est/sis) & $E_m$ & $700/800f'm$ \bigstrut\\
+    \hline
+    Módulo de elasticidad acero & $E_s$ & $2100000\frac{kgf}{cm^2}$ \bigstrut\\
+    \hline
+  \end{tabular}
+\end{table}
+
+\insertequationanum{\text{Tensión admisible de la albañilería:}\quad F_m = \begin{cases}0.33f'm & \text{Caso estático}
+\\0.33f'm\cdot 1.33 & \text{Caso sísmico}
+\end{cases}}
+
+\insertequationanum{\text{Tensión admisible del acero A44-28h:}\quad F_s = \begin{cases}1400 \frac{kgf}{cm^2} & \text{Caso estático}
+\\1850\frac{kgf}{cm^2} & \text{Caso sísmico}
+\end{cases}}
+
+\insertequationanum{\text{Tensión admisible del acero A63-42H:}\quad F_s = \begin{cases}1700 \frac{kgf}{cm^2} & \text{Caso estático}
+\\2200\frac{kgf}{cm^2} & \text{Caso sísmico}
+\end{cases}}
+
+\newpage
+\textbf{Cálculo de casos:}
+
+\begin{itemize}
+    \item Cálculo resistencia axial pura $N_a$:
+    \insertequationanum{N_1 = N_a = 0.2\cdot f'm \cdot \bigg( 1 - \pow{\big(\frac{h}{40\cdot t}\big)}{3}\bigg) \cdot A_e}
+    \vspace{-0.4cm}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{lp{1cm}p{9.0cm}}
+			En donde:	& $f'm$ & Resistencia prismática de la albañilería, \texttt{[kgf/cm2]}.\\
+			& $h$ & Altura efectiva del muro, \texttt{[cm]}.\\
+			& $t$ & Espesor efectivo del muro para evaluar el efecto del pandeo, \texttt{[cm]}.\\
+			& $A_e$ & Área efectiva de la sección, \texttt{[cm]}.\\
+		\end{tabular}
+	\end{table}
+	Cabe destacar que para el caso sísmico esta resistencia se aumenta en un factor de $1.33$. Para este caso, al ser una resistencia axial pura, el momento es cero.
+	\item \textbf{Caso 1}: Cálculo límite superior, resistencia axial máxima. Este punto corresponde al máximo momento para la misma resistencia axial calculada en el paso anterior, es el punto inicial del caso 1.
+	
+	\insertgatheranum{N_2 = N_1 = N_a\\M_2 = \big(F_m - F_a\big)\cdot t \cdot b \cdot \bigg( \frac{b}{2} - \frac{b}{3}\bigg)}
+	\vspace{-0.4cm}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{lp{1cm}p{9.0cm}}
+			En donde:	& $F_m$ &Tensión admisible de la albañilería, \texttt{[kgf/cm2]}.\\
+			& $F_s$ & Tensión admisible del acero, \texttt{[kgf/cm2]}.\\
+			& $t$ & Espesor del muro, \texttt{[cm]}.\\
+			& $b$ & Largo del muro, \texttt{[cm]}.\\
+		\end{tabular}
+	\end{table}
+	
+	\item \textbf{Caso 1}: Cálculo límite inferior, resistencia para la cual se posee el máximo momento asumiendo una sección completamente comprimida. Corresponde al punto entre el caso 1 y 2.
+	
+	\insertgatheranum{N_3 = \frac{F_m \cdot t \cdot b}{2} \\
+	M_3 =  \frac{F_m \cdot t \cdot b}{2} \cdot \bigg( \frac{b}{2} - \frac{b}{3}\bigg)}
+	\vspace{-0.4cm}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{lp{1cm}p{9.0cm}}
+			En donde:	& $F_m$ &Tensión admisible de la albañilería, \texttt{[kgf/cm2]}.\\
+			& $t$ & Espesor del muro, \texttt{[cm]}.\\
+			& $b$ & Largo del muro, \texttt{[cm]}.\\
+		\end{tabular}
+	\end{table}
+	
+	\item \textbf{Caso 2}: Este caso se calculó utilizando un número discreto de puntos $i$ variando $\alpha$, considerando que la profundidad del bloque de compresión es tal que no hay ninguna barra de refuerzo vertical en tracción.
+	
+	\newpage
+	\insertequationanum{\alpha_i \in \{1,\ \frac{b}{d}\}}
+	\insertgatheranum{{N}_{Caso2i} = F_m \cdot \alpha_i \cdot t \cdot \frac{d}{2} \\
+	{M}_{Caso2i} = {N}_{Caso2i} \cdot \bigg( d\cdot \frac{1+\gamma}{2} - \frac{\alpha_i \cdot d}{3}\bigg)}
+	\vspace{-0.4cm}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{lp{1cm}p{9.0cm}}
+			En donde:	& $F_m$ &Tensión admisible de la albañilería, \texttt{[kgf/cm2]}.\\
+			& $t$ & Espesor del muro, \texttt{[cm]}.\\
+			& $b$ & Largo del muro, \texttt{[cm]}.\\
+			& $d$ & Distancia  de centroide del grupo de barras ubicado en el borde traccionado, \texttt{[cm]}.\\
+			& $\gamma$ & Cociente entre la distancia del centroide del grupo de barras ubicado en el borde comprimido y el traccionado, $\frac{d'}{d}$, \texttt{[cm]}.\\
+		\end{tabular}
+	\end{table}
+	
+	\item \textbf{Caso 3}: Cálculo variando $\alpha$ entre el punto final del caso 2 y un punto de balance $k_b$ calculado a partir de la razón entre las tensiones admisibles del acero y la albañilería.
+	
+	\insertgatheranum{k_b = \frac{n_b}{n_b + \frac{F_s}{F_m}} \quad\quad n_b = \frac{E_s}{E_m}\\
+	\alpha_i \in \{k_b,\ 1\} \\
+	C_m = F_m \cdot \alpha_i \cdot t \cdot \frac{d}{2} \\
+	T_s = A_s\cdot n_b \cdot \frac{1-\alpha_i}{\alpha_i}\cdot F_m}
+	\insertgatheranum{N_{Caso3i} = C_m - T_s\\
+	M_{Caso3i} = C_m \cdot \bigg( d\cdot\frac{1+\gamma}{2} - \frac{\alpha_i \cdot d}{3} \bigg) + T_s \cdot \frac{\big(1-\gamma\big)\cdot d}{2}}
+	\vspace{-0.2cm}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{lp{1cm}p{9.0cm}}
+			En donde:	& $F_m$ & Tensión admisible de la albañilería, \texttt{[kgf/cm2]}.\\
+			& $F_s$ & Tensión admisible del acero, \texttt{[kgf/cm2]}.\\
+			& $E_m$ & Módulo elástico de la albañilería, \texttt{[kgf/cm2]}.\\
+			& $E_s$ & Módulo elástico del acero, \texttt{[kgf/cm2]}.\\
+		    & $t$ & Espesor del muro, \texttt{[cm]}.\\
+			& $d$ & Distancia  de centroide del grupo de barras ubicado en el borde traccionado, \texttt{[cm]}.\\
+			& $\gamma$ & Cociente entre la distancia del centroide del grupo de barras ubicado en el borde comprimido y el traccionado, $\frac{d'}{d}$, \texttt{[cm]}.\\
+			& $A_s$ & Área de las barras de acero, \texttt{[cm2]}\\
+		\end{tabular}
+	\end{table}
+	
+	\newpage
+	\item \textbf{Caso 4}: Cálculo variando $\alpha$ entre un valor mínimo $k_{min}$ (obtenido cuando la se agota la resistencia axial) y $k_b$.
+	
+	\insertgatheranum{k_{min} = -\frac{A_s\cdot n_b - \sqrt{\pow{A_s}{2}\cdot\pow{n_b}{2} + 2\cdot t \cdot d \cdot A_s \cdot n_b }  }{t\cdot d} \\
+	\alpha_i \in \{\frac{k_{min}}{2},\ \frac{k_b}{2}\}\\
+	C_m = \bigg( \frac{\alpha_i}{0.5 - \alpha_i} \cdot \frac{F_s}{n_b}\bigg) \cdot \frac{\alpha_i \cdot t \cdot d}{2} \\
+	T_s = A_s \cdot F_s
+	}
+	
+	\insertgatheranum{N_{Caso4i} = C_m - T_s\\
+	M_{Caso4i} = C_m \cdot \bigg( \frac{d\cdot \big(1+\gamma\big)}{2} - \frac{\alpha_i \cdot d}{3} \bigg) + T_s \cdot \frac{\big( 1-\gamma\big)\cdot d}{2}}
+	\vspace{-0.2cm}
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{lp{1cm}p{9.0cm}}
+			En donde:	& $F_s$ & Tensión admisible del acero, \texttt{[kgf/cm2]}.\\
+		    & $t$ & Espesor del muro, \texttt{[cm]}.\\
+			& $d$ & Distancia  de centroide del grupo de barras ubicado en el borde traccionado, \texttt{[cm]}.\\
+			& $\gamma$ & Cociente entre la distancia del centroide del grupo de barras ubicado en el borde comprimido y el traccionado, $\frac{d'}{d}$, \texttt{[cm]}.\\
+			& $A_s$ & Área de las barras de acero, \texttt{[cm2]}\\
+			& $n_b$ & Cociente entre el módulo elástico del acero y la albañilería, \texttt{[-]}\\
+			& $n_b$ & Punto de balance calculado en el caso 3, \texttt{[-]}\\
+		\end{tabular}
+	\end{table}
+	
+\end{itemize}
+
+Los pasos anteriores fueron programados en una rutina de \textit{Matlab} el cual pide todos los parámetros de entrada de cada muro y retorna una curva discreta de la curva en un número de puntos fijos (1000). La variación de $\alpha$ en los casos 2, 3 y 4 permite obtener curvas suavizadas y continuas.
+
+% \subsection{Verificación de deformaciones máximas}
+
+% \subsection{Limitaciones de la norma}

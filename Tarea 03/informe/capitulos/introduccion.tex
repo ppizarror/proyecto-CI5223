@@ -1,0 +1,17 @@
+\newpage
+\section{Introducción}
+
+En el presente informe, correspondiente a la tercera entrega del curso de diseño de albañilería estructural, se presentará la metodología y resultados del diseño de muros de una casa de un piso, ubicada en Illapel, Región de Coquimbo, sobre un suelo de tipo D, conformada por muros de albañilería armada.
+
+\insertimage{introduccion/illapel}{width=9cm}{Ubicación de la ciudad de Illapel.}
+
+El diseño de muros comprende en la modelación de la estructura con el software ETABS para obtener los esfuerzos, los cuales serán comparados con los respectivos diagramas de resistencia al corte, compresión y momento. Se dice que el diseño es satisfactorio cuando todas las solicitaciones están dentro de la resistencia de cada muro y se ha logrado un diseño óptimo, ello es, que la resistencia no es excesivamente superior a la demanda. \\
+
+El diseño se realiza según la norma de diseño sísmico NCh 433 Of. 96 Mod.2012 y la norma de albañilería armada NCh 1928.Of93 Mod.2003. La geometría y estructuración fueron realizadas en la entrega N°2 del curso, correspondiente a los plantos en planta y elevación de cada muro, por tanto en esta entrega se verificará que dicha estructuración resiste las demandas sísmicas y de sobrecarga de la estructura. Con el fin de simplificar el análisis se definieron geometrías, ello es, grupos de muros que poseen iguales dimensiones y refuerzos, resultando en un total de 16 geometrías para los 28 muros que posee la estructura. \\
+
+A modo de obtener los esfuerzos, se realizó un análisis modal espectral utilizando ETABS, definiendo una etiqueta \textit{pier} para determinar el máximo momento, esfuerzo axial y corte en cada uno de los ejes locales de cada muro. Dichos esfuerzos fueron comparados con la resistencia al corte y a la flexo-compresión, utilizando para ello las metodologías de cálculo vistas en cátedra. Por último se verifican las deformaciones de cada muro.
+
+\begin{images}[\label{esqplanos}]{Plano tipo de la casa.}
+    \addimage{introduccion/esqplanta}{width=7cm}{Esquema en planta.}
+    \addimage{introduccion/esqelev}{width=7cm}{Esquemas en elevación.}
+\end{images}
